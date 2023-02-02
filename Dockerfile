@@ -2,6 +2,7 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:latest
 USER root
 ENV FLASK_ENV=development
 ENV FLASK_APP=/app/wsgi.py
+RUN mkdir /app
 COPY /src /app
 RUN chmod 777 /app/entrypoint.sh && \
     chmod +x /app/entrypoint.sh- && \

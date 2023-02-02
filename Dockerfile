@@ -6,11 +6,11 @@ RUN mkdir /app
 WORKDIR /app
 COPY src/ .
 RUN ls -la
-RUN chmod 777 /app/entrypoint.sh && \
-    chmod +x /app/entrypoint.sh- && \
+RUN chmod 777 ./entrypoint.sh && \
+    chmod +x ./entrypoint.sh && \
     # Convert Windows end of line in Unix end of line (CR/LF to LF)
-    sed -i 's/\r//g' /app/entrypoint.sh && \
+    sed -i 's/\r//g' ./entrypoint.sh && \
     pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org -r requirements.txt
 
 USER 1001
-CMD [ "/app/entrypoint.sh" ]
+CMD [ "./entrypoint.sh" ]

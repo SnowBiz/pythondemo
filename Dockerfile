@@ -10,7 +10,7 @@ RUN chmod 777 ./entrypoint.sh && \
     chmod +x ./entrypoint.sh && \
     # Convert Windows end of line in Unix end of line (CR/LF to LF)
     sed -i 's/\r//g' ./entrypoint.sh && \
-    yum -y install python-pip && \
+    yum -y install python3-pip && \
     python3 -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org -r requirements.txt
 
 USER 1001

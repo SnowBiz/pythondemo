@@ -3,7 +3,8 @@ USER root
 ENV FLASK_ENV=development
 ENV FLASK_APP=/app/wsgi.py
 RUN mkdir /app
-COPY src/ /app
+WORKDIR /app
+COPY src/ .
 RUN ls -la
 RUN chmod 777 /app/entrypoint.sh && \
     chmod +x /app/entrypoint.sh- && \
@@ -11,6 +12,5 @@ RUN chmod 777 /app/entrypoint.sh && \
     sed -i 's/\r//g' /app/entrypoint.sh && \
     pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org -r requirements.txt
 
-WORKDIR /app
 USER 1001
 CMD [ "/app/entrypoint.sh" ]
